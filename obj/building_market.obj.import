@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/building_market.obj-ab921379dbca5da03ff16077a46892ce.mesh"
+
+[deps]
+
+files=[ "res://.import/building_market.obj-ab921379dbca5da03ff16077a46892ce.mesh" ]
+
+source_file="res://obj/building_market.obj"
+dest_files=[ "res://.import/building_market.obj-ab921379dbca5da03ff16077a46892ce.mesh", "res://.import/building_market.obj-ab921379dbca5da03ff16077a46892ce.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/building_cabin.obj-8160e390c75edc01d7319de6f93c5b4e.mesh"
+
+[deps]
+
+files=[ "res://.import/building_cabin.obj-8160e390c75edc01d7319de6f93c5b4e.mesh" ]
+
+source_file="res://obj/building_cabin.obj"
+dest_files=[ "res://.import/building_cabin.obj-8160e390c75edc01d7319de6f93c5b4e.mesh", "res://.import/building_cabin.obj-8160e390c75edc01d7319de6f93c5b4e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

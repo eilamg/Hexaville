@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/path_intersectionE.obj-dbc2700b41d79bbaca14504e48337123.mesh"
+
+[deps]
+
+files=[ "res://.import/path_intersectionE.obj-dbc2700b41d79bbaca14504e48337123.mesh" ]
+
+source_file="res://obj/path_intersectionE.obj"
+dest_files=[ "res://.import/path_intersectionE.obj-dbc2700b41d79bbaca14504e48337123.mesh", "res://.import/path_intersectionE.obj-dbc2700b41d79bbaca14504e48337123.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

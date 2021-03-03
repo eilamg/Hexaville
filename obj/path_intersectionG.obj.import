@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/path_intersectionG.obj-0098afb770c979b9387c78fc547629d0.mesh"
+
+[deps]
+
+files=[ "res://.import/path_intersectionG.obj-0098afb770c979b9387c78fc547629d0.mesh" ]
+
+source_file="res://obj/path_intersectionG.obj"
+dest_files=[ "res://.import/path_intersectionG.obj-0098afb770c979b9387c78fc547629d0.mesh", "res://.import/path_intersectionG.obj-0098afb770c979b9387c78fc547629d0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

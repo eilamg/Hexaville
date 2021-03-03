@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/sand_rocks.obj-7dbb6f160380facd82993b10b45befca.mesh"
+
+[deps]
+
+files=[ "res://.import/sand_rocks.obj-7dbb6f160380facd82993b10b45befca.mesh" ]
+
+source_file="res://obj/sand_rocks.obj"
+dest_files=[ "res://.import/sand_rocks.obj-7dbb6f160380facd82993b10b45befca.mesh", "res://.import/sand_rocks.obj-7dbb6f160380facd82993b10b45befca.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
