@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tile/anchor_mesh.tres" type="SphereMesh" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends MeshInstance
+
+
+signal clicked(anchor)
+
+
+func _on_mouse_click_area_input_event(camera, event, click_position, click_normal, shape_idx):
+    if event is InputEventMouseButton:
+        if event.pressed:
+            emit_signal(\"clicked\", self)
+            # prints(camera, event, click_position, click_normal, shape_idx)
+"
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.15
+
+[node name="anchor" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = null
+script = SubResource( 1 )
+
+[node name="mouse_click_area" type="Area" parent="."]
+
+[node name="collision" type="CollisionShape" parent="mouse_click_area"]
+shape = SubResource( 2 )
+[connection signal="input_event" from="mouse_click_area" to="." method="_on_mouse_click_area_input_event"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://obj/building_cabin.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Tile/tiles.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://Tile/anchor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tile/tile.gd" type="Script" id=4]
+
+
+[node name="tile" type="Spatial"]
+script = ExtResource( 4 )
+mesh_library = ExtResource( 2 )
+
+[node name="mesh" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = null
+
+[node name="anchors" type="Spatial" parent="."]
+
+[node name="N" parent="anchors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -1 )
+
+[node name="NE" parent="anchors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.866, 0.1, -0.5 )
+
+[node name="SE" parent="anchors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.866, 0.1, 0.5 )
+
+[node name="S" parent="anchors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 1 )
+
+[node name="SW" parent="anchors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866, 0.1, 0.5 )
+
+[node name="NW" parent="anchors" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866, 0.1, -0.5 )
+[connection signal="clicked" from="anchors/N" to="." method="_on_anchor_clicked"]
+[connection signal="clicked" from="anchors/NE" to="." method="_on_anchor_clicked"]
+[connection signal="clicked" from="anchors/SE" to="." method="_on_anchor_clicked"]
+[connection signal="clicked" from="anchors/S" to="." method="_on_anchor_clicked"]
+[connection signal="clicked" from="anchors/SW" to="." method="_on_anchor_clicked"]
+[connection signal="clicked" from="anchors/NW" to="." method="_on_anchor_clicked"]
