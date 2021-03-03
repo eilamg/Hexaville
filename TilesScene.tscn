@@ -13,8 +13,13 @@ var Tile = preload(\"res://Tile/tile.tscn\")
 
 onready var ghost_tile = $ghost_tile
 
+var tile_weights = []
+var tile_weights_ids = []
+
+
 func _ready():
     randomize()
+    read_tile_weights_file()
 
 
 func _on_tile_anchor_clicked(glob_pos):
@@ -24,8 +29,40 @@ func _on_tile_anchor_clicked(glob_pos):
 
     tile.select_mesh(ghost_tile.selected_mesh)
     tile.set_orientation(ghost_tile.orientation)
+
+    var i = select_random_tile()
+    ghost_tile.select_mesh(i)
+
     tile.connect(\"anchor_clicked\", self, \"_on_tile_anchor_clicked\")
     tile.connect(\"anchor_moused_over\", ghost_tile, \"_on_tile_anchor_moused_over\")
+
+
+func read_tile_weights_file():
+    var file = File.new()
+
+    var cumulative_weight = 0
+    var _weights = []
+    var _ids = []
+
+    file.open(\"res://tile_weights.csv\", File.READ)
+
+    var line = file.get_csv_line()
+    line = file.get_csv_line()  # skip header line
+    while len(line) > 1:
+        cumulative_weight += int(line[2])
+        _weights.append(cumulative_weight)
+        _ids.append(line[0])
+        line = file.get_csv_line()
+
+    file.close()
+
+    tile_weights = _weights
+    tile_weights_ids = _ids
+
+
+func select_random_tile():
+    var i = randi() % tile_weights[-1]
+    return tile_weights.bsearch(i)
 "
 
 [sub_resource type="GDScript" id=2]
