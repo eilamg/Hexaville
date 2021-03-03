@@ -7,13 +7,17 @@ script/source = "extends MeshInstance
 
 
 signal clicked(anchor)
+signal moused_over(anchor)
 
 
 func _on_mouse_click_area_input_event(camera, event, click_position, click_normal, shape_idx):
     if event is InputEventMouseButton:
-        if event.pressed:
+        if event.pressed and event.button_index == 1:
             emit_signal(\"clicked\", self)
-            # prints(camera, event, click_position, click_normal, shape_idx)
+
+
+func _on_mouse_entered():
+    emit_signal(\"moused_over\", self)
 "
 
 [sub_resource type="SphereShape" id=2]
@@ -29,3 +33,4 @@ script = SubResource( 1 )
 [node name="collision" type="CollisionShape" parent="mouse_click_area"]
 shape = SubResource( 2 )
 [connection signal="input_event" from="mouse_click_area" to="." method="_on_mouse_click_area_input_event"]
+[connection signal="mouse_entered" from="mouse_click_area" to="." method="_on_mouse_entered"]

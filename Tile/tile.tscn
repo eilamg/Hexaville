@@ -5,7 +5,6 @@
 [ext_resource path="res://Tile/anchor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tile/tile.gd" type="Script" id=4]
 
-
 [node name="tile" type="Spatial"]
 script = ExtResource( 4 )
 mesh_library = ExtResource( 2 )
@@ -49,8 +48,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866, 0.1, 0.5 )
 [node name="NW" parent="anchors" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866, 0.1, -0.5 )
 [connection signal="clicked" from="anchors/N" to="." method="_on_anchor_clicked"]
+[connection signal="moused_over" from="anchors/N" to="." method="_on_anchor_moused_over"]
 [connection signal="clicked" from="anchors/NE" to="." method="_on_anchor_clicked"]
+[connection signal="moused_over" from="anchors/NE" to="." method="_on_anchor_moused_over"]
 [connection signal="clicked" from="anchors/SE" to="." method="_on_anchor_clicked"]
+[connection signal="moused_over" from="anchors/SE" to="." method="_on_anchor_moused_over"]
 [connection signal="clicked" from="anchors/S" to="." method="_on_anchor_clicked"]
+[connection signal="moused_over" from="anchors/S" to="." method="_on_anchor_moused_over"]
 [connection signal="clicked" from="anchors/SW" to="." method="_on_anchor_clicked"]
+[connection signal="moused_over" from="anchors/SW" to="." method="_on_anchor_moused_over"]
 [connection signal="clicked" from="anchors/NW" to="." method="_on_anchor_clicked"]
+[connection signal="moused_over" from="anchors/NW" to="." method="_on_anchor_moused_over"]
