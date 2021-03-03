@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+
+onready var Tile = preload(\"res://Tile/tile.tscn\")
+var tile
+
+
+func _ready():
+    tile = Tile.instance()
+    add_child(tile)
+    tile.set_owner(self)
+    var tile_ids = tile.mesh_library.get_item_list()
+
+    print(tile_ids)
+
+    for id in tile_ids:
+        var tile_name = tile.mesh_library.get_item_name(id)
+        tile.select_mesh(id)
+        tile.name = tile_name
+
+        var packed_scene = PackedScene.new()
+        packed_scene.pack(tile)
+        ResourceSaver.save(\"res://Generated Tiles/\" + tile_name + \".tscn\", packed_scene, 64)
+"
+
+[node name="tile_scene_generator" type="Spatial"]
+script = SubResource( 1 )

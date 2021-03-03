@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+tool
+
+
+export var points : PoolVector3Array
+
+
+class Draw3D:
+    extends ImmediateGeometry
+
+    export var radius = 1
+
+    var points : PoolVector3Array = []
+
+    func _ready():
+        material_override = SpatialMaterial.new()
+        material_override.vertex_color_use_as_albedo = true
+
+    func add_hexagon(pos : Vector3):
+        var l = .2
+
+        add_line(pos + Vector3(l, 0, l), pos - Vector3(l, 0, l))
+        add_line(pos + Vector3(-l, 0, l), pos - Vector3(-l, 0, l))
+        for i in range(6):
+            var a0 = deg2rad(60 * i)
+            var a1 = deg2rad(60 * (i + 1))
+            add_line(
+                pos + Vector3(radius, 0, 0).rotated(Vector3(0, 1, 0), a0),
+                pos + Vector3(radius, 0, 0).rotated(Vector3(0, 1, 0), a1)
+            )
+
+    func add_line(p1 : Vector3, p2 : Vector3):
+        points.append(p1)
+        points.append(p2)
+
+    func _process(delta):
+        clear()
+        begin(Mesh.PRIMITIVE_LINES)
+        set_color(Color.greenyellow)
+        for p in points:
+            add_vertex(p)
+        end()
+
+
+func _ready():
+    var ld = Draw3D.new()
+    add_child(ld)
+    ld.set_owner(self)
+    for p in points:
+        ld.add_hexagon(p)
+"
+
+[node name="Spatial" type="Spatial"]
+
+[node name="HexGrid" type="Spatial" parent="."]
+script = SubResource( 1 )
+points = PoolVector3Array( 0, 0, 0, 1.5, 0, 0.866, 1.5, 0, -0.866, 3, 0, 0 )

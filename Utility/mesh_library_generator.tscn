@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tile/tiles.meshlib" type="MeshLibrary" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+tool
+
+
+export(String, DIR) var target_path setget set_target_path
+export(String) var output_filename
+export var bake_flag = false setget bake
+
+
+func set_target_path(path):
+    if path == \"\" or Directory.new().open(path) == OK:
+        target_path = path
+    else:
+        print(\"An error occurred when trying to access the path.\")
+
+
+func bake(value):
+    var dir = Directory.new()
+    if dir.open(target_path) == OK:
+        var meshlib = MeshLibrary.new()
+
+        dir.list_dir_begin()
+        var file_name = dir.get_next()
+        while file_name != \"\":
+            if not(dir.current_is_dir()) and file_name.ends_with(\".obj\"):
+                var mesh = load(target_path + \"/\" + file_name)
+                var mesh_name = file_name.replace(\".obj\", \"\")
+                var id = meshlib.get_last_unused_item_id()
+                meshlib.create_item(id)
+                meshlib.set_item_name(id, mesh_name)
+                meshlib.set_item_mesh(id, mesh)
+                var image = load(\"res://preview_images/\" + mesh_name + \".png\")
+                meshlib.set_item_preview(id, image)
+
+            file_name = dir.get_next()
+
+        ResourceSaver.save(\"res://\" + output_filename, meshlib)
+    else:
+        print(\"An error occurred when trying to access the path.\")
+"
+
+[node name="mesh_library_generator" type="Spatial"]
+script = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+target_path = "res://obj"
+output_filename = "tiles.meshlib"
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 1, 0.2, 1 )
+data = {
+"cells": PoolIntArray( 1, 0, 1441832, 2, 0, 1441807, 65536, 0, 1441832, 0, 1, 1441808, 1, 1, 1441808, 2, 1, 1441807, 65534, 1, 1441810, 65535, 1, 1048619, 65536, 1, 655380, 65537, 1, 21, 0, 2, 1441808, 1, 2, 1441808, 2, 2, 1441806, 65535, 2, 1441833, 65536, 2, 19, 65537, 2, 22 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
