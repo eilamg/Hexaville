@@ -3,5 +3,7 @@
 [ext_resource path="res://Camera/camera.gd" type="Script" id=1]
 
 [node name="camera" type="Camera"]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 3 )
+transform = Transform( 0.961262, 0.194905, -0.194905, 0, 0.707107, 0.707107, 0.275637, -0.679715, 0.679715, -1.25, 4, 3.5 )
+projection = 1
+size = 8.0
 script = ExtResource( 1 )
