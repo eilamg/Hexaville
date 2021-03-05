@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Spatial",
+"class": "HexGrid",
+"language": "GDScript",
+"path": "res://HexGrid/hex_grid.gd"
+}, {
+"base": "ImmediateGeometry",
+"class": "HexGridVisualizer",
+"language": "GDScript",
+"path": "res://HexGrid/hex_grid_visualizer.gd"
+} ]
 _global_script_class_icons={
-
+"HexGrid": "",
+"HexGridVisualizer": ""
 }
 
 [application]
