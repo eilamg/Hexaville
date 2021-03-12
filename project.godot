@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "Anchor",
+"language": "GDScript",
+"path": "res://Anchor/anchor.gd"
+}, {
+"base": "MeshInstance",
+"class": "GhostTile",
+"language": "GDScript",
+"path": "res://ghost_tile.gd"
+}, {
+"base": "Spatial",
 "class": "HexGrid",
 "language": "GDScript",
 "path": "res://HexGrid/hex_grid.gd"
@@ -18,10 +28,24 @@ _global_script_classes=[ {
 "class": "HexGridVisualizer",
 "language": "GDScript",
 "path": "res://HexGrid/hex_grid_visualizer.gd"
+}, {
+"base": "Spatial",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://Tile/tile.gd"
+}, {
+"base": "Spatial",
+"class": "TileGrid",
+"language": "GDScript",
+"path": "res://HexGrid/tile_grid.gd"
 } ]
 _global_script_class_icons={
+"Anchor": "",
+"GhostTile": "",
 "HexGrid": "",
-"HexGridVisualizer": ""
+"HexGridVisualizer": "",
+"Tile": "",
+"TileGrid": ""
 }
 
 [application]
