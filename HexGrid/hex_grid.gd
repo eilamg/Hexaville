@@ -2,37 +2,42 @@ extends Spatial
 class_name HexGrid
 
 
+signal hex_grid_updated
+
+
 enum Directions {N, NE, SE, S, SW, NW}
 const NEIGHBOR_OFFSETS = [
     Vector2(0, -2), Vector2(1, -1), Vector2(1, 1),
     Vector2(0, 2), Vector2(-1, 1), Vector2(-1, -1)
 ]
 
-var HEX_RADIUS  # 0.5 / sin(deg2rad(60))
-var HEX_COORDS_TO_POSITION  # HEX_RADIUS * Vector2(1.5, sin(deg2rad(60)))
+export var hex_radius = 0.5 / sin(deg2rad(60)) setget set_hex_radius
 
 var hexes = [] setget set_hexes
 
 
-func _init(hex_radius : float):
-    HEX_RADIUS = hex_radius
-    HEX_COORDS_TO_POSITION = HEX_RADIUS * Vector2(1.5, sin(deg2rad(60)))
+func set_hex_radius(value):
+    hex_radius = value
+    emit_signal("hex_grid_updated")
 
 
 func add_hex(hex_coordinates : Vector2):
     hexes.append(hex_coordinates)
+    emit_signal("hex_grid_updated")
 
 
 func remove_hex(hex_coordinates : Vector2):
     hexes.erase(hex_coordinates)
+    emit_signal("hex_grid_updated")
 
 
 func set_hexes(value : Array):
     hexes = value
+    emit_signal("hex_grid_updated")
 
 
 func hex_coords_to_position(hex_coordinates : Vector2):
-    var v2 = hex_coordinates * HEX_COORDS_TO_POSITION
+    var v2 = hex_coordinates * hex_radius * Vector2(1.5, sin(deg2rad(60)))
     return Vector3(v2.x, 0, v2.y)
 
 
