@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://obj/building_cabin.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Tile/tiles.meshlib" type="MeshLibrary" id=2]
-[ext_resource path="res://Tile/anchor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tile/tile.gd" type="Script" id=4]
 
 [node name="tile" type="Spatial"]
@@ -27,35 +26,3 @@ material/11 = null
 material/12 = null
 material/13 = null
 material/14 = null
-
-[node name="anchors" type="Spatial" parent="."]
-
-[node name="N" parent="anchors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -1 )
-
-[node name="NE" parent="anchors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.866, 0.1, -0.5 )
-
-[node name="SE" parent="anchors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.866, 0.1, 0.5 )
-
-[node name="S" parent="anchors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 1 )
-
-[node name="SW" parent="anchors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866, 0.1, 0.5 )
-
-[node name="NW" parent="anchors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866, 0.1, -0.5 )
-[connection signal="clicked" from="anchors/N" to="." method="_on_anchor_clicked"]
-[connection signal="moused_over" from="anchors/N" to="." method="_on_anchor_moused_over"]
-[connection signal="clicked" from="anchors/NE" to="." method="_on_anchor_clicked"]
-[connection signal="moused_over" from="anchors/NE" to="." method="_on_anchor_moused_over"]
-[connection signal="clicked" from="anchors/SE" to="." method="_on_anchor_clicked"]
-[connection signal="moused_over" from="anchors/SE" to="." method="_on_anchor_moused_over"]
-[connection signal="clicked" from="anchors/S" to="." method="_on_anchor_clicked"]
-[connection signal="moused_over" from="anchors/S" to="." method="_on_anchor_moused_over"]
-[connection signal="clicked" from="anchors/SW" to="." method="_on_anchor_clicked"]
-[connection signal="moused_over" from="anchors/SW" to="." method="_on_anchor_moused_over"]
-[connection signal="clicked" from="anchors/NW" to="." method="_on_anchor_clicked"]
-[connection signal="moused_over" from="anchors/NW" to="." method="_on_anchor_moused_over"]
